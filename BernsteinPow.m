@@ -1,7 +1,4 @@
 function new_p = BernsteinPow(p, y)
-    if size(p,1)==1 && size(p,2) ~= 1
-        p = p';
-    end
     if y == 0
         new_p = ones(1,size(p,2));
         return
