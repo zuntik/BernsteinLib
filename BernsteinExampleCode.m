@@ -75,8 +75,8 @@ p = [ 2 4 -1 2 5];
 m = BernsteinToMon(p,2);
 
 figure, hold on
-fplot(@(x)polyval(polyint(m',2),x),[0 2]);
-BernsteinPlot(BernsteinAntiDeriv(p,2,3)-.1,2);
+fplot(@(x)polyval(polyint(m',2.9),x),[0 2]);
+BernsteinPlot(BernsteinAntiDeriv(p,2,3),2);
 
 
 %% Test Mul
