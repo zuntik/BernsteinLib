@@ -1,4 +1,4 @@
-function b = deCasteljau(p,i,j,t)
+function b = deCasteljau_alg(p,i,j,t)
     if i == 1
         b = p(j);
     else

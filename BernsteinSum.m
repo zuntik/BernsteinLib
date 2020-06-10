@@ -1,10 +1,5 @@
 function [new_p] = BernsteinSum(p1,p2)
 
-if size(p1,1)==1 && size(p1,2) ~= 1
-    p1 = p1';
-    p2 = p2';
-end
-
 [ m, dim1 ] = size(p1);
 [ n, dim2 ] = size(p2);
 

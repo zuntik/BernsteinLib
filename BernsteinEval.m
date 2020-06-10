@@ -7,12 +7,7 @@ function [points] = BernsteinEval(p,T,times)
 %   T is the time length of the curve
 %   times are the points to evaluate
 
-    [num_points,dim] = size(p);
-    if num_points==1 && dim ~= 1
-        p = p';
-    end
-    [num_points,dim] = size(p);
-    if dim==1
+    if size(p,2)==1
         points = arrayfun(@(t)BernsteinEvalMat(size(p,1)-1,T,t)*p,times);
     else
         points = BernsteinEvalMat(size(p,1)-1,T,times(:))*p;

@@ -1,11 +1,5 @@
 function [new_p] = BernsteinMul(p1,p2)
 
-    if size(p1,1)<size(p2,1)
-        tmp = p1;
-        p1 = p2;
-        p2 = tmp;
-    end
-    
     m = size(p1,1)-1;
     n = size(p2,1)-1;
     

@@ -6,13 +6,6 @@ function BernsteinPlot(p,T,varargin)
     parse(parser,varargin{:});
     
     [ n, dim ] = size(p);
-    if n==1 && dim ~= 1
-        p = p';
-        dim = dim+n;
-        n = dim - n;
-        dim = dim- n;
-    end
-    
     if dim == 1
         fplot(@(times)arrayfun(@(t)(BernsteinEval(p,T,t)),times),[0 T]);
         if parser.Results.PlotControlPoints

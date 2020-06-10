@@ -5,12 +5,12 @@ close all
 
 figure, hold on
 fplot(@(times)arrayfun(@(t)BernsteinBasis(2,5,t),times),[0 1]);
-fplot(@(x)(BernsteinEval([0,0,1,0,0,0],1,x)-0.01),[0 1])
+fplot(@(x)(BernsteinEval([0,0,1,0,0,0].',1,x)-0.01),[0 1])
 
 %%
 
 figure, hold on
-p = [ 2 4 -1 2 5];
+p = [ 2 4 -1 2 5].';
 
 fplot(@(times)arrayfun(@(x) sum(arrayfun(@(i) (p(i)*BernsteinBasis(i-1,4,x)),1:5)), times),[0 1]);
 
@@ -53,7 +53,7 @@ BernsteinPlot(p,1,'PlotControlPoints',false);
 
 %% Test toMonomial
 
-p = [ 2 4 -1 2 5];
+p = [ 2 4 -1 2 5].';
 m = BernsteinToMon(p,1);
 
 figure, hold on
@@ -62,7 +62,7 @@ BernsteinPlot(p-0.1,1);
 
 %% Test Deriv
 
-p = [ 2 4 -1 2 5];
+p = [ 2 4 -1 2 5].';
 m = BernsteinToMon(p,1);
 
 figure, hold on
@@ -71,7 +71,7 @@ BernsteinPlot(BernsteinDeriv(p,1)-1,1);
 
 %% Test AntiDeriv
 
-p = [ 2 4 -1 2 5];
+p = [ 2 4 -1 2 5].';
 m = BernsteinToMon(p,2);
 
 figure, hold on
@@ -81,8 +81,8 @@ BernsteinPlot(BernsteinAntiDeriv(p,2,3),2);
 
 %% Test Mul
 
-p1 = [ 2 4 -1 2 5];
-p2 = [ 5 1 8 ];
+p1 = [ 2 4 -1 2 5].';
+p2 = [ 5 1 8 ].';
 m1 = BernsteinToMon(p1,3);
 m2 = BernsteinToMon(p2,3);
 
@@ -95,8 +95,8 @@ BernsteinPlot(p-1,3);
 
 %% Test Sum
 
-p1 = [ 2 4 -1 2 5];
-p2 = [ 5 1 8 ];
+p1 = [ 2 4 -1 2 5].';
+p2 = [ 5 1 8 ].';
 m1 = BernsteinToMon(p1,3);
 m2 = BernsteinToMon(p2,3);
 
@@ -109,7 +109,7 @@ BernsteinPlot(p-1,3);
 
 %% Test Power
 
-p = [ 2 4 -1 2 5];
+p = [ 2 4 -1 2 5].';
 m = BernsteinToMon(p,3);
 
 p = BernsteinPow(p,2);
@@ -121,7 +121,7 @@ BernsteinPlot(p-1,3);
 
 %% Test Integral
 
-p = [ 2 4 -1 2 5];
+p = [ 2 4 -1 2 5].';
 m = BernsteinToMon(p,3);
 
 disp(polyval(polyint(m'),3));
@@ -130,7 +130,7 @@ disp(BernsteinIntegr(p, 3));
 
 %% Test Degree Elevation
 
-p = [ 2 4 -1 2 5];
+p = [ 2 4 -1 2 5].';
 new_p = BernsteinDegrElev(p,10);
 figure, hold on
 BernsteinPlot(p-0.1, 5);
@@ -140,8 +140,8 @@ BernsteinPlot(new_p, 5);
 % objective is to test the curve in the times corresponding to the control
 % points
 
-p = [ 2 4 -1 2 5];
+p = [ 2 4 -1 2 5].';
 mat = BernsteinCtrlPntsEval(4);
 figure, hold on
 BernsteinPlot(p,1);
-scatter(0:1/(length(p)-1):1, mat*p','filled');
+scatter(0:1/(length(p)-1):1, mat*p,'filled');

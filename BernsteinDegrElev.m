@@ -6,15 +6,7 @@ function new_cp = BernsteinDegrElev(cp, m)
 	% OUTPUT
 	% new_cp: new control points for new order
 
-	[num_points,dim] = size(cp);
-	
-	if num_points==1 && dim ~= 1
-		cp = cp';
-		dim = dim+num_points;
-		num_points= dim - num_points;
-		dim = dim- num_points;
-    end
-    
+	[num_points,dim] = size(cp);    
     n = num_points-1;
     
     if n==m
