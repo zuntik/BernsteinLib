@@ -7,6 +7,10 @@ figure, hold on
 fplot(@(times)arrayfun(@(t)BernsteinBasis(2,5,t),times),[0 1]);
 fplot(@(x)(BernsteinEval([0,0,1,0,0,0].',1,x)-0.01),[0 1])
 
+%text(.8,.8,'Your String','Units','normalized')
+h = annotation('textbox', [0 1 0 0], 'String', 'YourString', 'FitBoxToText', true);
+% http://matlab.izmiran.ru/help/techdoc/ref/func_b40.html#12898
+
 %%
 
 figure, hold on
