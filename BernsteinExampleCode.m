@@ -91,11 +91,11 @@ m1 = BernsteinToMon(p1,3);
 m2 = BernsteinToMon(p2,3);
 
 m = conv(m1,m2);
-p = BernsteinMul(p1,p2);
 
 figure, hold on
 fplot(@(x)polyval(m,x),[0 3]);
-BernsteinPlot(p-1,3);
+BernsteinPlot(BernsteinMul(p1,p2)-1,3);
+BernsteinPlot(BernsteinMul(p1,p2,nchoosek_mod_mat(size(p1,1)+size(p2,1)+1))+1,3);
 
 %% Test Sum
 

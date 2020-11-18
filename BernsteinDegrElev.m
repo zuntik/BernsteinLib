@@ -6,7 +6,7 @@ function new_cp = BernsteinDegrElev(cp, m)
 	% OUTPUT
 	% new_cp: new control points for new order
 
-	[num_points,dim] = size(cp);    
+	[num_points,~, num_levels] = size(cp);    
     n = num_points-1;
     
     if n==m
@@ -14,14 +14,12 @@ function new_cp = BernsteinDegrElev(cp, m)
     end
     assert(m>n,'new degree not greater than current');
     
-	new_cp = zeros(m+1, dim);
-	
-    for i = 0:m
-		for j = [ max(0, i-m+n) : min(n,i) ]
-			%new_cp(i+1,:) = new_cp(i+1,:) + (nchoosek_mod(n,j)*nchoosek_mod(m-n,i-j)/nchoosek_mod(m,i)).*cp(j+1,:);
-			new_cp(i+1,:) = new_cp(i+1,:) + nchoosek_mod(i,j)*nchoosek_mod(m-i,n-j).*cp(j+1,:);
-		end
+    ElevMat = BernsteinDegrElevMat(n, m);
+    
+    new_cp = cell(1,1,num_levels);
+    for i = 1:num_levels
+        new_cp{1,1,i} = ElevMat*cp(:,:,i);
     end
-    new_cp = new_cp./nchoosek_mod(m,n);
-
+    new_cp = cell2mat(new_cp);
+    
 end
