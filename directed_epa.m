@@ -33,10 +33,10 @@ function vec = directed_epa(support, simplex,d)
         e = B-A;
         oa = A;
         n = tripleProduct(e,oa,e);
-        if abs(n(1))+ abs(n(2)) <extrabit*10e-3
-            vec = d.*extrabit./norm(d);
-            return
-        end
+%         if abs(n(1))+ abs(n(2)) <extrabit*10e-3
+%             vec = d.*extrabit./norm(d);
+%             return
+%         end
         C = support(n);
         if abs(dot(C,dPerp)) < 0.000001
             vec = C + extrabit;
